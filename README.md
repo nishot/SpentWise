@@ -1,73 +1,123 @@
-﻿SpentWise: Personal Finance API
-SpentWise is a robust backend REST API built with FastAPI and PostgreSQL. It allows users to track their daily expenses, categorize their spending. The system is built with security in mind, utilizing JWT authentication and password hashing to ensure data privacy.
+# 💰 SpentWise – Personal Finance API
 
-🚀 Features
-User Authentication: Secure registration and login using OAuth2 with JWT tokens.
+**SpentWise** is a robust backend REST API built with **FastAPI** and **PostgreSQL**.
+It allows users to track daily expenses, categorize spending, and manage personal finances securely.
 
-Expense Tracking: Full CRUD operations for personal expenses.
+The system is built with **security-first principles**, using **JWT authentication** and **password hashing** to ensure data privacy and ownership protection.
 
-Relational Data: Expenses are linked to specific Users and Categories via Foreign Keys.
+---
 
-Ownership Protection: Users can only view, update, or delete their own data.
+## 🚀 Features
 
-Automatic Documentation: Interactive API docs provided by Swagger UI.
+* 🔐 **User Authentication**
+  Secure registration and login using OAuth2 with JWT tokens.
 
-🛠 Tech Stack
-Framework: FastAPI
+* 💸 **Expense Tracking**
+  Full CRUD operations for managing personal expenses.
 
-Database: PostgreSQL
+* 🗂 **Relational Data Modeling**
+  Expenses are linked to specific **Users** and **Categories** via foreign keys.
 
-ORM: SQLAlchemy
+* 🔒 **Ownership Protection**
+  Users can only view, update, or delete their own data.
 
-Validation: Pydantic (v2)
+* 📑 **Automatic Documentation**
+  Interactive API documentation provided by Swagger UI.
 
-Security: Passlib (Bcrypt) & Jose (JWT)
+---
 
-Environment Management: Python-Dotenv
+## 🛠 Tech Stack
 
-🏗 Database Architecture
-The system uses a relational schema to maintain data integrity. Every expense must belong to a user and be assigned to a category.
+* **Framework**: FastAPI
+* **Database**: PostgreSQL
+* **ORM**: SQLAlchemy
+* **Validation**: Pydantic (v2)
+* **Security**: Passlib (Bcrypt) & Python-JOSE (JWT)
+* **Environment Management**: Python-Dotenv
 
-🚦 Getting Started
-1. Prerequisites
-Python 3.9+
+---
 
-PostgreSQL installed and running
+## 🏗 Database Architecture
 
-2. Installation
-Bash
+The system uses a **relational database schema** to maintain data integrity.
 
-# Clone the repository
+* Every **Expense** belongs to a **User**
+* Every **Expense** is assigned to a **Category**
+* Ownership rules are enforced at the API level
+
+---
+
+## 🚦 Getting Started
+
+### ✅ Prerequisites
+
+* Python **3.9+**
+* PostgreSQL installed and running
+
+---
+
+## 📦 Installation
+
+### 1️⃣ Clone the repository
+
+```bash
 git clone https://github.com/yourusername/spentwise-api.git
 cd spentwise-api
+```
 
-# Create and activate virtual environment
+---
+
+### 2️⃣ Create and activate virtual environment
+
+```bash
 python -m venv venv
-# Mac/Linux:
+```
+
+**Mac / Linux**
+
+```bash
 source venv/bin/activate
-# Windows:
+```
+
+**Windows**
+
+```bash
 .\venv\Scripts\activate
+```
 
-# Install dependencies
-(sorry this part has not been implemented till now but if one day done then follow ::::)
+---
+
+### 3️⃣ Install dependencies
+
+> ⚠️ *This step will be fully supported once `requirements.txt` is finalized.*
+
+```bash
 pip install -r requirements.txt
+```
 
-3. Environment Setup
-Create a .env file in the root directory and add your credentials:
+---
 
-Code snippet
+## 🔐 Environment Setup
 
+Create a `.env` file in the project root and add the following:
+
+```env
 DATABASE_HOSTNAME=localhost
 DATABASE_PORT=5432
+DATABASE_USERNAME=postgres
 DATABASE_PASSWORD=your_password
 DATABASE_NAME=spentwise
-DATABASE_USERNAME=postgres
+
 SECRET_KEY=your_secret_key_here
 ALGORITHM=HS256
 ACCESS_TOKEN_EXPIRE_MINUTES=30
+```
 
+---
 
-project_structure:
+## 📁 Project Structure
+
+```
 .
 ├── app/
 │   ├── routers/
@@ -84,38 +134,86 @@ project_structure:
 │   └── main.py
 ├── requirements.txt
 └── README.md
+```
 
+---
 
-4. Running the App
-Bash
+## ▶️ Running the Application
 
+```bash
 uvicorn app.main:app --reload
-The API will be available at http://127.0.0.1:8000. Access the interactive docs at http://127.0.0.1:8000/docs.
+```
 
-📌 API Endpoints
-👤 Users
-Method	Endpoint	Description
-GET	/users/	Get current user
-POST	/users/	Create new user
-DELETE	/users/{id}	Delete user
-🔑 Authentication
-Method	Endpoint	Description
-POST	/login/	User login & token generation
-📂 Categories (Protected)
-Method	Endpoint	Description
-GET	/categories/	List user categories
-POST	/categories/	Create a category
-💸 Expenses (Protected)
-Method	Endpoint	Description
-GET	/expense/	Get all expenses
-POST	/expense/	Create new expense
-PUT	/expense/{id}	Update expense
-DELETE	/expense/{id}	Delete expense
+* API Base URL:
+  👉 `http://127.0.0.1:8000`
 
-#######For contribution###################
-just fork and do what you want prefer if some one make a good frontend for this 
-more commits coming soon...............
+* Swagger Docs:
+  👉 `http://127.0.0.1:8000/docs`
 
-📝 License
-Distributed under the MIT License. See LICENSE for more information.
+---
 
+## 📌 API Endpoints
+
+### 👤 Users
+
+| Method | Endpoint      | Description      |
+| ------ | ------------- | ---------------- |
+| GET    | `/users/`     | Get current user |
+| POST   | `/users/`     | Create new user  |
+| DELETE | `/users/{id}` | Delete user      |
+
+---
+
+### 🔑 Authentication
+
+| Method | Endpoint  | Description                   |
+| ------ | --------- | ----------------------------- |
+| POST   | `/login/` | User login & token generation |
+
+---
+
+### 📂 Categories (Protected)
+
+| Method | Endpoint       | Description          |
+| ------ | -------------- | -------------------- |
+| GET    | `/categories/` | List user categories |
+| POST   | `/categories/` | Create a category    |
+
+---
+
+### 💸 Expenses (Protected)
+
+| Method | Endpoint        | Description        |
+| ------ | --------------- | ------------------ |
+| GET    | `/expense/`     | Get all expenses   |
+| POST   | `/expense/`     | Create new expense |
+| PUT    | `/expense/{id}` | Update expense     |
+| DELETE | `/expense/{id}` | Delete expense     |
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome!
+
+* Fork the repository
+* Create a new branch
+* Make your changes
+* Open a pull request
+
+✨ **Frontend contributions are especially welcome**
+(More backend features and commits coming soon!)
+
+---
+
+## 📝 License
+
+Distributed under the **MIT License**.
+See `LICENSE` for more information.
+
+---
+
+
+
+need Internship soon doing AI/ML...stay tune
+more commits also coming soon 
