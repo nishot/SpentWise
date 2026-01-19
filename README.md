@@ -1,5 +1,9 @@
 # 💰 SpentWise – Personal Finance API
 
+
+<img width="1898" height="1069" alt="Screenshot 2026-01-16 235902" src="https://github.com/user-attachments/assets/c0472f2d-1416-4221-86d2-0853f73bcdd3" />
+
+
 **SpentWise** is a robust backend REST API built with **FastAPI** and **PostgreSQL**.
 It allows users to track daily expenses, categorize spending, and manage personal finances securely.
 
@@ -217,3 +221,4 @@ See `LICENSE` for more information.
 
 need Internship soon doing AI/ML...stay tune
 more commits also coming soon 
+
