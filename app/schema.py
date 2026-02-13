@@ -1,41 +1,43 @@
-from pydantic import BaseModel,EmailStr,NonNegativeFloat
-from sqlalchemy.orm import Relationship
 from datetime import datetime
 
+from pydantic import BaseModel, EmailStr, NonNegativeFloat
+
+
 class UserCreate(BaseModel):
-    email:EmailStr
-    password:str
+    email: EmailStr
+    password: str
 
 
 class UserResponse(BaseModel):
-    users_id:int
-    email:EmailStr
-    created_on:datetime
-    
+    users_id: int
+    email: EmailStr
+    created_on: datetime
+
     class Config:
-        from_attribute=True
+        from_attributes = True
 
 
 class Login(BaseModel):
-    email:EmailStr
-    password:str
+    email: EmailStr
+    password: str
 
 
 class Categories(BaseModel):
-    name:str
+    name: str
 
-class categories_return(Categories):
-    categories_id:int
 
-class expense(BaseModel):
-    # id, title, amount, user_id (FK), category_id (FK)
-    categories_id:int
-    title:str
-    amount:NonNegativeFloat
+class CategoriesReturn(Categories):
+    categories_id: int
 
-class expense_return(expense):
-    expense_id:int
-    Relationship()
+
+class Expense(BaseModel):
+    categories_id: int
+    title: str
+    amount: NonNegativeFloat
+
+
+class ExpenseReturn(Expense):
+    expense_id: int
 
 
 class Token(BaseModel):
